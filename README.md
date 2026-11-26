@@ -18,7 +18,7 @@ avec limite de scans et historique détaillé.
 
 ## Présentation
 
-ScanTrack est le **Projet 6** de la liste des projets web IFRI 2025, réalisé par le **Groupe 12** (10 étudiants en Génie Logiciel, IFRI, Université d'Abomey-Calavi). Remise prévue le **11 décembre 2026**.
+ScanTrack est le **Projet 6** de la liste des projets web IFRI 2026, réalisé par le **Groupe 12** (10 étudiants en Génie Logiciel, IFRI, Université d'Abomey-Calavi). Remise prévue le **11 décembre 2026**.
 
 Contrairement à un générateur de QR classique, ScanTrack produit des codes **dynamiques** : le QR code ne contient pas l'adresse finale, mais un lien court vers la plateforme. C'est ce qui permet de **compter les scans, de les limiter et de les analyser**, et de modifier la destination ou la limite sans réimprimer le QR.
 
