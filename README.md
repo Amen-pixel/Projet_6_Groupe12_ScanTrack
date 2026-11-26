@@ -26,7 +26,7 @@ Contrairement à un générateur de QR classique, ScanTrack produit des codes **
 
 | Fonctionnalité | Statut |
 |---|---|
-| Modèle de données (utilisateurs, QR codes, scans) et squelette Laravel | Fait |
+| Squelettes Laravel et React, modèle de données (utilisateurs, QR codes, scans) | Fait |
 | Authentification (inscription, connexion) | En cours |
 | Création de QR codes : URL, texte, e-mail, SMS, WiFi, vCard | À faire |
 | Personnalisation : couleurs, logo, téléchargement PNG et SVG | À faire |
@@ -56,17 +56,25 @@ L'incrément du compteur est conditionnel (`scan_count < max_scans`) pour que de
 | Couche | Technologies |
 |---|---|
 | Backend (API) | PHP 8.2+, Laravel, Laravel Sanctum |
-| Frontend | React (Vite), JavaScript |
+| Frontend | React (Vite), React Router, Axios, JavaScript |
 | Base de données | SQLite en développement |
 | Graphiques et carte (prévu) | Recharts, Leaflet, OpenStreetMap |
+| QR codes personnalisés (prévu) | qr-code-styling |
 | Géolocalisation par IP (prévu) | GeoLite2 |
 
 ## Structure du dépôt
 
 ```
 ScanTrack/
-├── backend/     API Laravel : modèles, migrations, routes
-└── frontend/    Interface React (Vite)
+├── backend/             API Laravel
+│   ├── app/Models/      QrCode, Scan, User
+│   ├── database/        migrations
+│   └── routes/          api.php (API), web.php (redirection /r/{code}, prévu)
+└── frontend/            Interface React (Vite)
+    └── src/
+        ├── api/         client Axios (jeton d'authentification inclus)
+        ├── layouts/     mise en page (menu latéral)
+        └── pages/       une page par écran
 ```
 
 ## Modèle de données
@@ -82,8 +90,13 @@ Sous Windows, [Laragon](https://laragon.org) installe PHP et Composer en une foi
 
 ```bash
 git clone https://github.com/Amen-pixel/Projet_6_Groupe12_ScanTrack.git
-cd Projet_6_Groupe12_ScanTrack/backend
+cd Projet_6_Groupe12_ScanTrack
+```
 
+**Backend** (premier terminal, depuis la racine du dépôt) :
+
+```bash
+cd backend
 composer install
 cp .env.example .env
 php artisan key:generate
@@ -91,9 +104,17 @@ php artisan migrate        # accepter la création du fichier SQLite
 php artisan serve
 ```
 
-L'API tourne alors sur `http://127.0.0.1:8000`.
+L'API tourne sur `http://127.0.0.1:8000`.
 
-Le frontend sera documenté ici dès que son dossier `frontend/` sera en place.
+**Frontend** (second terminal, depuis la racine du dépôt) :
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+L'interface est disponible sur `http://localhost:5173`. Les appels vers `/api` sont redirigés automatiquement vers l'API sur le port 8000 (voir `vite.config.js`), donc le backend doit tourner en même temps.
 
 ## Organisation de l'équipe
 
@@ -111,16 +132,17 @@ La liste des contributeurs est visible dans l'onglet **Insights → Contributors
 
 ## Contribuer
 
-1. Créer une branche par fonctionnalité : `feature/auth`, `feature/qr-creation`, `feature/scan-engine`, `feature/stats`, `feature/dashboard`.
+1. Créer une branche par personne et par fonctionnalité, sous la forme `feature/<fonction>-back` ou `feature/<fonction>-front` (exemples : `feature/auth-back`, `feature/qr-creation-front`, `feature/stats-back`).
 2. Ne jamais pousser directement sur `main` : ouvrir une **Pull Request**, relue par un autre membre avant fusion.
-3. Ne jamais modifier une migration déjà poussée : en créer une nouvelle.
-4. Ne jamais versionner le fichier `.env` (seul `.env.example` l'est).
+3. Côté front, chacun ne modifie que ses propres fichiers dans `src/pages/`, sans toucher à `App.jsx` ni à `package.json`.
+4. Ne jamais modifier une migration déjà poussée : en créer une nouvelle.
+5. Ne jamais versionner le fichier `.env` (seul `.env.example` l'est).
 
 ## Jalons
 
 | Date | Objectif |
 |---|---|
-| 25 nov. | Squelette backend et frontend sur `main` |
+| 25 nov. | Squelette backend et frontend sur `main` (fait) |
 | 29 nov. | Connexion, layout et création de QR (URL, texte) |
 | 1 déc. | Premier scan réel enregistré |
 | 6 déc. | Fin des fonctionnalités |
