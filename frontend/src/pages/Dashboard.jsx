@@ -1,5 +1,7 @@
 import { useState } from 'react'
 import StatCard from '../components/dashboard/StatCard'
+import RecentQrTable from '../components/dashboard/RecentQrTable'
+import TopQrList from '../components/dashboard/TopQrList'
 import './Dashboard.css'
 
 const periods = [7, 30, 90]
@@ -9,6 +11,12 @@ const stats = [
   { label: 'Scans totaux', value: '1 284', change: '+18 % sur la période' },
   { label: 'QR actifs', value: '18', change: '+5 % sur la période' },
   { label: 'Scans ce mois', value: '356', change: '+22 % sur la période' },
+]
+
+const qrs = [
+  { name: 'Site web', sub: 'scantrack.app', type: 'URL', status: 'Actif', scans: 428, limit: 1000 },
+  { name: 'Wi-Fi invité', sub: 'Réseau : ScanTrack', type: 'Wi-Fi', status: 'Actif', scans: 312, limit: 500 },
+  { name: 'Carte de visite', sub: 'Jean Dupont', type: 'vCard', status: 'Actif', scans: 247, limit: null },
 ]
 
 export default function Dashboard() {
@@ -39,6 +47,13 @@ export default function Dashboard() {
         {stats.map((s) => (
           <StatCard key={s.label} {...s} />
         ))}
+      </div>
+
+      {/* Le graphique et la carte viendront ici (morceaux 3 et 4) */}
+
+      <div className="dash-row">
+        <RecentQrTable qrs={qrs} />
+        <TopQrList qrs={qrs} />
       </div>
     </div>
   )

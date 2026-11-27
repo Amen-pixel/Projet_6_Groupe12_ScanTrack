@@ -44,3 +44,61 @@
 .stat-label { color: #6b7194; font-size: 13px; }
 .stat-value { font-size: 28px; }
 .stat-change { color: #15803d; font-size: 12px; font-weight: 600; }
+
+
+.small { font-size: 12px; }
+
+.dash-row {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.card {
+  min-width: 0;
+  padding: 16px;
+  border: 1px solid #e8eaf4;
+  border-radius: 12px;
+  background: #fff;
+}
+.card-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+.card-head h2 { margin: 0; font-size: 15px; }
+.card-link { color: #4f46e5; font-size: 12px; font-weight: 600; text-decoration: none; }
+
+.table-wrap { overflow-x: auto; }
+.qr-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.qr-table th { padding: 8px; color: #6b7194; font-size: 12px; font-weight: 500; text-align: left; }
+.qr-table td { padding: 10px 8px; border-top: 1px solid #eef0f7; vertical-align: middle; }
+
+.badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 600;
+}
+.badge-blue { background: #dbeafe; color: #1d4ed8; }
+.badge-purple { background: #ede9fe; color: #6d28d9; }
+.badge-green { background: #dcfce7; color: #15803d; }
+.badge-gray { background: #e5e7eb; color: #4b5563; }
+
+.progress { height: 6px; margin-top: 4px; border-radius: 999px; background: #e5e7f2; overflow: hidden; }
+.progress-fill { height: 100%; border-radius: 999px; background: #4f46e5; }
+
+.btn-outline {
+  padding: 6px 10px;
+  border: 1px solid #d9dcec;
+  border-radius: 8px;
+  background: #fff;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.top-list { display: flex; flex-direction: column; gap: 14px; margin: 0; padding: 0; list-style: none; }
+.top-row { display: flex; justify-content: space-between; font-size: 13px; }
