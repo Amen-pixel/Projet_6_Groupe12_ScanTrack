@@ -1,0 +1,46 @@
+.dashboard h1 { margin: 0; font-size: 28px; }
+.muted { margin: 4px 0 0; color: #6b7194; font-size: 14px; }
+
+.dash-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.period-switch {
+  display: flex;
+  padding: 4px;
+  border: 1px solid #e1e4f0;
+  border-radius: 10px;
+  background: #fff;
+}
+.period-switch button {
+  padding: 8px 14px;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: #4a5078;
+  font-size: 13px;
+  cursor: pointer;
+}
+.period-switch button.active { background: #4f46e5; color: #fff; font-weight: 600; }
+
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+.stat-card {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 16px;
+  border: 1px solid #e8eaf4;
+  border-radius: 12px;
+  background: #fff;
+}
+.stat-label { color: #6b7194; font-size: 13px; }
+.stat-value { font-size: 28px; }
+.stat-change { color: #15803d; font-size: 12px; font-weight: 600; }
