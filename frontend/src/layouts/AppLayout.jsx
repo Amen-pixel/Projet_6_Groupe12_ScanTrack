@@ -1,20 +1,52 @@
 import { NavLink, Outlet } from 'react-router-dom'
+import './AppLayout.css'
 
 const links = [
-  ['/', 'Tableau de bord'], ['/qr', 'Mes QR codes'], ['/qr/nouveau', 'Créer un QR code'],
-  ['/historique', 'Historique'], ['/statistiques', 'Statistiques'], ['/profil', 'Profil'],
+  ['/', 'Tableau de bord'],
+  ['/qr', 'Mes QR codes'],
+  ['/qr/nouveau', 'Créer un QR code'],
+  ['/historique', 'Historique'],
+  ['/statistiques', 'Statistiques'],
+  ['/profil', 'Profil'],
 ]
 
 export default function AppLayout() {
   return (
-    <div style={{ display: 'flex', minHeight: '100vh' }}>
-      <nav style={{ width: 220, background: '#151B3A', padding: 16, display: 'flex', flexDirection: 'column', gap: 8 }}>
-        <h2 style={{ color: '#fff' }}>ScanTrack</h2>
-        {links.map(([to, label]) => (
-          <NavLink key={to} to={to} end style={{ color: '#fff' }}>{label}</NavLink>
-        ))}
-      </nav>
-      <main style={{ flex: 1, padding: 24 }}><Outlet /></main>
+    <div className="layout">
+      <aside className="sidebar">
+        <div className="brand">
+          <strong>ScanTrack</strong>
+          <small>Générez · Gérez · Analysez</small>
+        </div>
+
+        <nav>
+          {links.map(([to, label]) => (
+            <NavLink key={to} to={to} end className="nav-link">
+              {label}
+            </NavLink>
+          ))}
+        </nav>
+
+        <footer>
+          ScanTrack © 2026
+          <br />
+          Groupe 12 - Projet 6
+        </footer>
+      </aside>
+
+      <div className="content">
+        <header className="topbar">
+          <input type="search" placeholder="Rechercher un QR code..." />
+          <div className="user">
+            <span className="avatar">JD</span>
+            <span>Bonjour, Jean Dupont</span>
+          </div>
+        </header>
+
+        <main className="page">
+          <Outlet />
+        </main>
+      </div>
     </div>
   )
 }
