@@ -102,3 +102,35 @@
 
 .top-list { display: flex; flex-direction: column; gap: 14px; margin: 0; padding: 0; list-style: none; }
 .top-row { display: flex; justify-content: space-between; font-size: 13px; }
+
+.dash-row-even { grid-template-columns: 1fr 1fr; }
+
+.chart-box { height: 220px; }
+
+.geo { display: flex; gap: 16px; align-items: stretch; }
+.map-box {
+  flex: 1;
+  min-width: 0;
+  height: 220px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.geo-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 12px;
+  width: 140px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 13px;
+}
+.geo-list li { display: flex; justify-content: space-between; gap: 8px; }
+
+@media (max-width: 900px) {
+  .stat-grid { grid-template-columns: repeat(2, 1fr); }
+  .dash-row, .dash-row-even { grid-template-columns: 1fr; }
+  .geo { flex-direction: column; }
+  .geo-list { width: auto; }
+}
